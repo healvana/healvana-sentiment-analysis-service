@@ -1,0 +1,42 @@
+# Development Files
+.git/
+.gitignore
+README.md
+*.md
+.env*
+!.env.example
+*.log
+logs/
+
+# Python Cache
+__pycache__/
+*.pyc
+venv/
+.venv/
+
+# IDE & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Test Files
+tests/
+*_test.py
+.pytest_cache/
+
+# Large Files
+models/
+*.bin
+*.pt
+
+# Build Files
+build/
+dist/
+*.egg-info/
+
+# Backup Files
+*.backup
+*.bak
+Dockerfile*
+docker-compose*

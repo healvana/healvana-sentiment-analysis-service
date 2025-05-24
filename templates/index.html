@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health Sentiment Analysis</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🧠 Mental Health Sentiment Analysis</h1>
+            <p>Analyze sentiment in text and web content using AI</p>
+        </header>
+
+        <main>
+            <div class="input-section">
+                <div class="input-type-selector">
+                    <label class="radio-option">
+                        <input type="radio" name="inputType" value="text" checked>
+                        <span>📝 Text Analysis</span>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="inputType" value="url">
+                        <span>🔗 URL Analysis</span>
+                    </label>
+                </div>
+
+                <form id="analysisForm">
+                    <div id="textInput" class="input-group">
+                        <label for="textArea">Enter text to analyze:</label>
+                        <textarea 
+                            id="textArea" 
+                            placeholder="Enter your text here... (e.g., 'I'm feeling great today!')"
+                            rows="6"
+                            maxlength="10000"
+                        ></textarea>
+                        <div class="char-counter">
+                            <span id="charCount">0</span> / 10,000 characters
+                        </div>
+                    </div>
+
+                    <div id="urlInput" class="input-group hidden">
+                        <label for="urlField">Enter URL to analyze:</label>
+                        <input 
+                            type="url" 
+                            id="urlField" 
+                            placeholder="https://example.com/article"
+                        >
+                        <div class="help-text">
+                            Supported: News articles, blog posts, web pages
+                        </div>
+                    </div>
+
+                    <button type="submit" id="analyzeBtn" class="analyze-btn">
+                        <span id="btnText">🔍 Analyze Sentiment</span>
+                        <span id="btnLoader" class="hidden">⏳ Analyzing...</span>
+                    </button>
+                </form>
+            </div>
+
+            <div id="results" class="results-section hidden">
+                <div id="successResults">
+                    <h2>📊 Analysis Results</h2>
+                    
+                    <div class="prominent-sentiment">
+                        <div class="sentiment-main">
+                            <h3>Overall Sentiment</h3>
+                            <div id="sentimentLabel" class="sentiment-value"></div>
+                        </div>
+                        <div class="confidence">
+                            <div class="confidence-label">Confidence</div>
+                            <div id="confidenceScore" class="confidence-value"></div>
+                        </div>
+                    </div>
+
+                    <div class="detailed-scores">
+                        <h3>Detailed Breakdown</h3>
+                        <div id="scoresContainer"></div>
+                    </div>
+
+                    <div class="metadata">
+                        <div class="meta-item">
+                            <span class="meta-label">Chunks Processed:</span>
+                            <span id="numChunks"></span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Model:</span>
+                            <span id="modelName"></span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Request ID:</span>
+                            <span id="requestId"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="errorResults" class="error-results hidden">
+                    <h2>❌ Analysis Failed</h2>
+                    <p id="errorMessage"></p>
+                    <div class="error-details">
+                        Request ID: <span id="errorRequestId"></span>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="api-info">
+                <h3>API Information</h3>
+                <div class="api-endpoints">
+                    <div><strong>Health Check:</strong> GET /health</div>
+                    <div><strong>Documentation:</strong> <a href="/docs/" target="_blank">Swagger UI</a></div>
+                    <div><strong>Analysis:</strong> POST /analyze</div>
+                </div>
+            </div>
+            <div class="disclaimer">
+                ⚠️ <strong>Disclaimer:</strong> This tool is for informational purposes only. 
+                Not a substitute for professional mental health advice.
+            </div>
+        </footer>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
